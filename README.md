@@ -4,6 +4,7 @@ PHP Diff Class
 Introduction
 ------------
 A Bootstrap 4 Version of [php-diff](https://github.com/chrisboulton/php-diff) by Chris Boulton.
+
 [Example](https://normanhuth.com/diff)
 
 Merge files using jQuery

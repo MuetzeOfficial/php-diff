@@ -3,35 +3,13 @@ PHP Diff Class
 
 Introduction
 ------------
-A comprehensive library for generating differences between
-two hashable objects (strings or arrays). Generated differences can be
-rendered in all of the standard formats including:
- * Unified
- * Context
- * Inline HTML
- * Side by Side HTML
-
-The logic behind the core of the diff engine (ie, the sequence matcher)
-is primarily based on the Python difflib package. The reason for doing
-so is primarily because of its high degree of accuracy.
-
-Example Use
------------
-A quick usage example can be found in the example/ directory and under
-example.php.
-
-More complete documentation will be available shortly.
+A Bootstrap 4 Version of [php-diff](https://github.com/chrisboulton/php-diff) by Chris Boulton.
 
 Merge files using jQuery
 ------------------------
 Xiphe has build a jQuery plugin with that you can merge the compared
 files. Have a look at [jQuery-Merge-for-php-diff](https://github.com/Xiphe/jQuery-Merge-for-php-diff).
 
-Todo
-----
- * Ability to ignore blank line changes
- * 3 way diff support
- * Performance optimizations
 
 License (BSD License)
 ---------------------

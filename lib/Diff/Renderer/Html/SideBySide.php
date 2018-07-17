@@ -64,7 +64,7 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 	{
 		$changes 	= parent::render();
 		#$maxwidth	= '';
-		$maxwidth	= ' style="max-width: 500px;word-break: break-all"';
+		$maxwidth	= ' style="width: 50%;word-break: break-all"';
 
 		$html = '';
 		if(empty($changes)) {

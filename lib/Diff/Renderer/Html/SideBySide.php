@@ -1,4 +1,14 @@
 <?php
+/*
+
+Bootstrap 4 Version by Norman Huth
+https://normanhuth.com
+
+PHP 7
+
+*/
+
+
 /**
  * Side by Side HTML diff generator for PHP DiffLib.
  *
@@ -52,7 +62,9 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 	 */
 	public function render()
 	{
-		$changes = parent::render();
+		$changes 	= parent::render();
+		#$maxwidth	= '';
+		$maxwidth	= ' style="max-width: 500px;word-break: break-all"';
 
 		$html = '';
 		if(empty($changes)) {
@@ -62,16 +74,16 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 		$html .= '<table class="text-dark bg-light table-responsive">';
 		$html .= '<thead>';
 		$html .= '<tr>';
-		$html .= '<th colspan="2" class="bg-dark text-light pl-1" style="min-width: 499px;">Old Version</th>';
-		$html .= '<th colspan="2" class="bg-dark text-light pl-1" style="min-width: 499px;">New Version</th>';
+		$html .= '<th colspan="2" class="bg-dark text-light pl-1">Version 1</th>';
+		$html .= '<th colspan="2" class="bg-dark text-light pl-1">Version 2</th>';
 		$html .= '</tr>';
 		$html .= '</thead>';
 		foreach($changes as $i => $blocks) {
 			if($i > 0) {
-				$html .= '<tbody>';
-				$html .= '<th class="bg-secondary text-center pr-1 text-light border-dark border-right">&hellip;</th><td>&nbsp;</td>';
-				$html .= '<th class="bg-secondary text-center pr-1 text-light border-dark border-right">&hellip;</th><td>&nbsp;</td>';
-				$html .= '</tbody>';
+				$html .= '<tr>';
+				$html .= '<td class="bg-secondary text-center pr-1 text-light border-dark border-right">&hellip;</td><td>&nbsp;</td>';
+				$html .= '<td class="bg-secondary text-center pr-1 text-light border-dark border-right">&hellip;</td><td>&nbsp;</td>';
+				$html .= '</tr>';
 			}
 
 			foreach($blocks as $change) {
@@ -83,9 +95,9 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 						$toLine = $change['changed']['offset'] + $no + 1;
 						$html .= '<tr>';
 						$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">'.$fromLine.'</th>';
-						$html .= '<td class="Left">'.$line.'&nbsp;</td>';
+						$html .= '<td class="Left"'.$maxwidth.'>'.$line.'&nbsp;</td>';
 						$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">'.$toLine.'</th>';
-						$html .= '<td class="Right">'.$line.'&nbsp;</td>';
+						$html .= '<td class="Right"'.$maxwidth.'>'.$line.'&nbsp;</td>';
 						$html .= '</tr>';
 					}
 				}
@@ -97,7 +109,7 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 						$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">&nbsp;</th>';
 						$html .= '<td class="Left alert-success">&nbsp;</td>';
 						$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">'.$toLine.'</th>';
-						$html .= '<td class="Right alert-success"><span class="alert-link">'.$line.'</span>&nbsp;</td>';
+						$html .= '<td class="Right alert-success"'.$maxwidth.'><span class="alert-link">'.$line.'</span>&nbsp;</td>';
 						$html .= '</tr>';
 					}
 				}
@@ -107,7 +119,7 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 						$fromLine = $change['base']['offset'] + $no + 1;
 						$html .= '<tr>';
 						$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">'.$fromLine.'</th>';
-						$html .= '<td class="Left alert-danger"><span class="alert-link">'.$line.'</span>&nbsp;</td>';
+						$html .= '<td class="Left alert-danger"'.$maxwidth.'><span class="alert-link">'.$line.'</span>&nbsp;</td>';
 						$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">&nbsp;</th>';
 						$html .= '<td class="Right alert-danger">&nbsp;</td>';
 						$html .= '</tr>';
@@ -120,7 +132,7 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 							$fromLine = $change['base']['offset'] + $no + 1;
 							$html .= '<tr>';
 							$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">'.$fromLine.'</th>';
-							$html .= '<td class="Left alert-warning">'.$line.'&nbsp;</td>';
+							$html .= '<td class="Left alert-warning"'.$maxwidth.'>'.$line.'&nbsp;</td>';
 							if(!isset($change['changed']['lines'][$no])) {
 								$toLine = '&nbsp;';
 								$changedLine = '&nbsp;';
@@ -130,7 +142,7 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 								$changedLine = $change['changed']['lines'][$no];
 							}
 							$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">'.$toLine.'</th>';
-							$html .= '<td class="Right alert-warning">'.$changedLine.'</td>';
+							$html .= '<td class="Right alert-warning"'.$maxwidth.'>'.$changedLine.'</td>';
 							$html .= '</tr>';
 						}
 					}
@@ -146,10 +158,10 @@ class Diff_Renderer_Html_SideBySide extends Diff_Renderer_Html_Array
 							}
 							$html .= '<tr>';
 							$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">'.$fromLine.'</th>';
-							$html .= '<td class="Left">'.$line.'&nbsp;</td>';
+							$html .= '<td class="Left"'.$maxwidth.'>'.$line.'&nbsp;</td>';
 							$toLine = $change['changed']['offset'] + $no + 1;
 							$html .= '<th class="bg-secondary text-right pr-1 text-light border-dark border-right">'.$toLine.'</th>';
-							$html .= '<td class="Right">'.$changedLine.'</td>';
+							$html .= '<td class="Right"'.$maxwidth.'>'.$changedLine.'</td>';
 							$html .= '</tr>';
 						}
 					}

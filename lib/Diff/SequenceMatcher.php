@@ -121,7 +121,7 @@ class Diff_SequenceMatcher
 		if(!is_array($a)) {
 			$a = str_split($a);
 		}
-		if($a == $this->a) {
+		if($a === $this->a) {
 			return;
 		}
 

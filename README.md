@@ -5,7 +5,7 @@ Introduction
 ------------
 A Bootstrap 4 Version of [php-diff](https://github.com/chrisboulton/php-diff) by Chris Boulton.
 
-[Example](https://normanhuth.com/diff)
+[Example](https://normanhuth.com/Text-Diff-Compare)
 
 Merge files using jQuery
 ------------------------
